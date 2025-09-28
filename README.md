@@ -1,49 +1,71 @@
-Projeto de Conexão e ORM com Schema Modificado
-Este projeto demonstra a adaptação de implementações de acesso a banco de dados (BD) com foco em manipulação de pedidos (pedido) e itens de pedido (item_pedido), refletindo alterações no esquema (schema) original do MySQL.
+🐍 Projeto de Adaptação de Schema e Validação C.R.U.D.
+Demonstração de proficiência em Engenharia de Dados e ORM, aplicando mudanças de schema em projetos legados e validando a integridade dos dados.
 
-🎯 Objetivo Principal
-O objetivo foi modificar a estrutura de dados existente e validar a completa funcionalidade C.R.U.D. (Create, Read, Update, Delete) nas seguintes plataformas:
+✨ Habilidades Técnicas em Destaque
+Este projeto prova a capacidade de gerenciar o ciclo de vida de um banco de dados, desde a definição do esquema até a manipulação de dados em tempo real, utilizando diferentes abordagens de acesso, vou explicar o codigo basicamente: 
 
-MySQL Connector (Simulado via SQLite): Demonstração do uso de comandos SQL brutos.
+Habilidade
 
-SQLAlchemy ORM (Em Memória): Demonstração do uso de Mapeamento Objeto-Relacional.
+Descrição
 
-⚙️ Modificações Estruturais (Schema)
-As seguintes alterações foram implementadas no esquema das tabelas pedido e item_pedido para modernizar a estrutura:
+Modelagem de Dados
 
-Remoção da Coluna data_pedido: A coluna de data de criação de pedidos foi removida da tabela pedido, simplificando a entidade.
+Capacidade de entender e aplicar alterações de DDL (remoção e adição de colunas) em um modelo relacional.
 
-Adição da Coluna categoria: Uma nova coluna categoria (VARCHAR 100) foi adicionada à tabela item_pedido, permitindo classificar os produtos de forma granular (ex.: 'Eletrônicos', 'Tecnologia').
+Integração ORM
 
-✅ Testes C.R.U.D. Validados
-Ambos os projetos contêm rotinas de teste automatizadas que validam as quatro operações essenciais:
+Implementação e adaptação de classes Python para mapeamento com SQLAlchemy, garantindo a persistência.
+
+SQL Nativo
+
+Domínio do uso de comandos DML (INSERT, UPDATE, DELETE) em implementações raw com MySQL Connector (simulado).
+
+Testes de Cobertura
+
+Validação do C.R.U.D. completo para garantir que as alterações do schema não introduziram inconsistências.
+
+⚙️ Modificações do Schema Relacional
+O esquema original do banco de dados de pedidos foi modificado com foco em otimização e granularidade de dados:
+
+❌ Remoção Estratégica
+Tabela pedido: A coluna data_pedido foi removida.
+
+(Rationale: Simplicidade e delegação da gestão de tempo para timestamps automáticos do BD ou lógica da aplicação.)
+
+✅ Adição Funcional
+Tabela item_pedido: Adição da nova coluna categoria (VARCHAR 100).
+
+(Rationale: Maior capacidade analítica e classificação granular dos produtos, suportando filtros e relatórios.)
+
+🚀 Validação C.R.U.D. (Testes de Integração)
+O código garante que, após as alterações de schema, todas as operações fundamentais funcionam perfeitamente em ambas as implementações (SQLAlchemy e MySQL Connector).
 
 Operação
 
 Teste Realizado
 
-Foco na Nova Estrutura
+Ponto de Checagem do Novo Schema
 
 CREATE (Inserção)
 
-Criação de um Cliente, um Pedido e um Item.
+Cria um Pedido e insere o Item.
 
-Confirma que a inserção do Item Pedido requer o campo categoria.
+Confirma a obrigatoriedade da nova coluna categoria durante o INSERT.
 
-READ (Listagem)
+READ (Leitura)
 
-Consulta do Pedido e listagem detalhada do Item.
+Lista os detalhes do Pedido e seus Itens.
 
-Valida a leitura da categoria do item e a ausência da data_pedido no Pedido.
+Valida a leitura correta do valor de categoria e confirma a ausência da data_pedido.
 
 UPDATE (Atualização)
 
-Modificação da categoria de um Item Pedido específico.
+Modifica o valor da categoria do Item.
 
-Confirma a alteração bem-sucedida no novo campo categoria.
+Demonstra a capacidade de alterar o valor da nova coluna categoria.
 
 DELETE (Deleção)
 
-Remoção completa do Cliente, Pedido e todos os Itens relacionados.
+Remove todos os registros criados (Item, Pedido e Cliente).
 
-Garante a integridade referencial e a limpeza completa dos registros.
+Confirma a integridade referencial e a limpeza completa do BD.
